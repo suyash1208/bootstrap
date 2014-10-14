@@ -116,6 +116,13 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
           element.removeAttr('aria-activedescendant');
         } else {
           element.attr('aria-activedescendant', getMatchId(index));
+        var tempA = angular.element('#'+getMatchId(index)+' > a');
+            if(tempA){
+                 setTimeout(function(){
+                    tempA.focus();
+                    element.focus();
+                });
+            }
         }
       });
 
