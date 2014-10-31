@@ -117,18 +117,17 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
         } else {
           element.attr('aria-activedescendant', getMatchId(index));
         
-        setTimeout(function(){
-                var activeLiElem = document.getElementById(getMatchId(index));
-                if(activeLiElem){
-                    var activeAElem = activeLiElem.getElementsByTagName('A')[0];
-                    if(activeAElem){
-                       activeAElem.focus();
-                       element[0].focus();
-
-                    }
-                }
-            });
         
+          var activeLiElem = document.getElementById(getMatchId(index));
+          if(activeLiElem) {
+              var activeAElem = activeLiElem.getElementsByTagName('A')[0];
+              if(activeAElem) {
+                  setTimeout(function(){
+                      activeAElem.focus();
+                      element[0].focus();
+                  });
+              }
+          }
         }
       });
 
