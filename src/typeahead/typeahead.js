@@ -116,13 +116,19 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
           element.removeAttr('aria-activedescendant');
         } else {
           element.attr('aria-activedescendant', getMatchId(index));
-        var tempA = angular.element('#'+getMatchId(index)+' > a');
-            if(tempA){
-                 setTimeout(function(){
-                    tempA.focus();
-                    element.focus();
-                });
-            }
+        
+        setTimeout(function(){
+                var activeLiElem = document.getElementById(getMatchId(index));
+                if(activeLiElem){
+                    var activeAElem = activeLiElem.getElementsByTagName('A')[0];
+                    if(activeAElem){
+                       activeAElem.focus();
+                       element[0].focus();
+
+                    }
+                }
+            });
+        
         }
       });
 
